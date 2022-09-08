@@ -27,16 +27,16 @@ public class MainActivity extends AppCompatActivity {
                  String can = " ", chi = " ";
                  int namDuong = Integer.parseInt(edtCalendar.getText().toString());
                  switch (namDuong%10){
-                     case 0: can = "Canh "; break;
-                     case 1: can = "Tân "; break;
-                     case 2: can = "Nhâm "; break;
-                     case 3: can = "Quý "; break;
-                     case 4: can = "Giáp "; break;
-                     case 5: can = "Ất "; break;
-                     case 6: can = "Bính "; break;
-                     case 7: can = "Đinh "; break;
-                     case 8: can = "Mậu "; break;
-                     case 9: can = "Kỷ"; break;
+                     case 0: can = " Canh "; break;
+                     case 1: can = " Tân "; break;
+                     case 2: can = " Nhâm "; break;
+                     case 3: can = " Quý "; break;
+                     case 4: can = " Giáp "; break;
+                     case 5: can = " Ất "; break;
+                     case 6: can = " Bính "; break;
+                     case 7: can = " Đinh "; break;
+                     case 8: can = " Mậu "; break;
+                     case 9: can = " Kỷ "; break;
                  }
                 switch (namDuong%12){
                     case 0: chi = "Thân "; break;
