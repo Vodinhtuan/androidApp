@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 edtC.setText("");
                 edtF.setText("");
+                edtF.requestFocus(); // đưa con trỏ người dùng về edtF
             }
         });
     }
