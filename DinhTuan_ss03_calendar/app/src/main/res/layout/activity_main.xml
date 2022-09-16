@@ -16,10 +16,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#3F51B5"
-            android:text="Chuyển Đổi Năm Dương Lịch"
             android:layout_span="2"
+            android:background="#3F51B5"
             android:gravity="center"
+            android:text="Convert Calendar Year"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </TableRow>
@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calendar"
+            android:gravity="center"
             android:textColor="#3F51B5"
             android:textSize="18sp" />
 
@@ -41,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:gravity="center"
             android:inputType="number"
             android:text="2021"
             android:textSize="20sp" />
@@ -63,6 +65,7 @@
         android:layout_height="match_parent" >
 
         <TextView
+            android:gravity="center"
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,6 +75,7 @@
 
         <TextView
             android:id="@+id/txtLunar"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#D18E8E"
