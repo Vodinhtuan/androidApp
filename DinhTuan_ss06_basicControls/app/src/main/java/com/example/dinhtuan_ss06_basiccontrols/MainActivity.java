@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                // Lấy thông tin bằng cấp
                 String certificate = "";
                 int idSelect = idCertificate.getCheckedRadioButtonId(); // Lấy id của RadioButton được chọn trong group.
                 RadioButton radioSelect = findViewById(idSelect); // Khai báo và tham chiếu id cho Radio Button được chọn.
@@ -71,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     hobbies += chkCoding.getText().toString() + "\n";
                 }
 
-                //
+                // Lấy thông tin bổ sung
                 String add = edtAddInfor.getText().toString();
+
                 String general = "Name: " +  name + "\n" +"ID: " + ID + "\n" + "Certificate: " + certificate + "\n" + "Hobbies: " + hobbies + "\n";
                 general += "------ THÔNG TIN BỔ SUNG ------ \n";
                 general += add;
