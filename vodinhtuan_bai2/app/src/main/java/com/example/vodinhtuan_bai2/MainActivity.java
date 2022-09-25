@@ -17,9 +17,6 @@ public class MainActivity extends AppCompatActivity {
     EditText edtVND, edtNgoaiTe;
     Button btnClear, btnVndtoNgoaiTe, btnNgoaiteToVnd;
     RadioGroup idRadioGroup;
-    int ketqua = 0;
-    String check = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,30 +30,20 @@ public class MainActivity extends AppCompatActivity {
         btnVndtoNgoaiTe = findViewById(R.id.btnVndtoNgoaiTe);
         idRadioGroup = findViewById(R.id.idRadioGroup);
 
-        DecimalFormat dcf = new DecimalFormat("0.0");
-
-        int vnd = Integer.parseInt(edtVND.getText().toString());
-        int ngoaiTe = Integer.parseInt(edtNgoaiTe.getText().toString());
-        
-        int idSelect = idRadioGroup.getCheckedRadioButtonId();
-        RadioButton radioSelect = findViewById(idSelect);
-        check = radioSelect.getText().toString();
-
         btnVndtoNgoaiTe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*if(check == "USD"){
-                    ketqua = vnd/22280;
-                    edtNgoaiTe.setText(dcf.format(ketqua));
-                }
-                if(check == "EUR"){
-                    ketqua = vnd/24280;
-                    edtNgoaiTe.setText(dcf.format(ketqua));
-                }
-                if(check == "JPY"){
-                    ketqua = vnd/204;
-                    edtNgoaiTe.setText(dcf.format(ketqua));
-                }*/
+                double ketqua;
+                String check = "";
+
+                int idSelect = idRadioGroup.getCheckedRadioButtonId();
+                RadioButton radioSelect = findViewById(idSelect);
+                check = radioSelect.getText().toString();
+
+                DecimalFormat dcf = new DecimalFormat("0.0");
+
+                double vnd = Double.parseDouble(edtVND.getText().toString());
+
                 switch (check){
                     case "USD":{
                         ketqua = vnd/22280;
@@ -79,19 +66,30 @@ public class MainActivity extends AppCompatActivity {
         btnNgoaiteToVnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                double ketqua;
+                String check = "";
+
+                int idSelect = idRadioGroup.getCheckedRadioButtonId();
+                RadioButton radioSelect = findViewById(idSelect);
+                check = radioSelect.getText().toString();
+
+                DecimalFormat dcf = new DecimalFormat("0.0");
+
+                double ngoaiTe = Double.parseDouble(edtNgoaiTe.getText().toString());
+
                 switch (check){
                     case "USD":{
                         ketqua = ngoaiTe*22280;
-                        edtNgoaiTe.setText(dcf.format(ketqua));
+                        edtVND.setText(dcf.format(ketqua));
                         break;
                     }
                     case "EUR":{
                         ketqua = ngoaiTe*24280;
-                        edtNgoaiTe.setText(dcf.format(ketqua));
+                        edtVND.setText(dcf.format(ketqua));
                         break;
                     } case "JPY":{
                         ketqua = ngoaiTe*204;
-                        edtNgoaiTe.setText(dcf.format(ketqua));
+                        edtVND.setText(dcf.format(ketqua));
                         break;
                     }
                 }

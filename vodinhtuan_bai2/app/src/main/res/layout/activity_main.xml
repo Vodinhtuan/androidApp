@@ -29,6 +29,7 @@
         android:layout_height="match_parent" >
 
         <TextView
+            android:layout_marginLeft="30dp"
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,14 +79,14 @@
         android:layout_height="match_parent" >
 
         <TextView
-
+            android:layout_marginLeft="5dp"
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Việt Nam đồng: "
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <EditText
             android:id="@+id/edtVND"
@@ -101,13 +102,14 @@
         android:layout_height="match_parent" >
 
         <TextView
+            android:layout_marginLeft="5dp"
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Ngoại tệ: "
             android:textColor="@color/black"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <EditText
             android:id="@+id/edtNgoaiTe"
@@ -122,21 +124,24 @@
         android:layout_height="match_parent" >
 
         <Button
+
             android:id="@+id/btnVndtoNgoaiTe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_gravity="center"
             android:text="VND to Ngoại Tệ"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="50dp"/>
+            android:backgroundTint="#8BC34A"
+        />
 
         <Button
+            android:backgroundTint="#8BC34A"
+
             android:id="@+id/btnNgoaiteToVnd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_gravity="center"
             android:text="Ngoại Tệ to VND"
-            android:layout_marginRight="50dp"/>
+            />
     </TableRow>
 
     <TableRow
@@ -145,11 +150,11 @@
         android:layout_height="match_parent" >
 
         <Button
+            android:backgroundTint="#8BC34A"
             android:id="@+id/btnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="70dp"
+            android:layout_gravity="center"
             android:layout_span="2"
             android:text="CLEAR" />
     </TableRow>
