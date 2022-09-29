@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChildActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8BC34A"
+        android:text="KẾT QUẢ GIẢI CHƯƠNG TRÌNH BẬC 1"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <EditText
+        android:text="NGHIỆM CỦA PHƯƠNG TRÌNH "
+        android:id="@+id/txtKQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#4CAF50"/>
+
+    <Button
+        android:id="@+id/edtBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#8BC34A"
+        android:text="Back" />
+</LinearLayout>
