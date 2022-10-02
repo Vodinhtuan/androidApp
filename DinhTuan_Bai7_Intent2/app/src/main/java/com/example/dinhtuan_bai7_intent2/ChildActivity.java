@@ -36,7 +36,6 @@ public class ChildActivity extends AppCompatActivity {
         }
         txtKQ.setText(kq);
 
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
