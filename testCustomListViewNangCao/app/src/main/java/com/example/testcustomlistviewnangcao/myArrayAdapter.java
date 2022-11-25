@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.testcustomlistviewnangcao.model.Phone;
+
 import java.util.ArrayList;
 
 public class myArrayAdapter extends ArrayAdapter<Phone> {
@@ -36,11 +38,18 @@ public class myArrayAdapter extends ArrayAdapter<Phone> {
         // lấy 1 phần tử trong mảng
         Phone myPhone = myList.get(position);
         //Khai báo, tham chiếu Id và hiển thị ảnh lên ImageView
+
         ImageView img_phone = convertView.findViewById(R.id.imgPhone);
         img_phone.setImageResource(myPhone.getImg());
+
         // Khai báo, ánh xạ id và hiển thị dữ liệu tên điện thoại
         TextView txt_phone = convertView.findViewById(R.id.txt_phone);
         txt_phone.setText(myPhone.getName());
+
+        // Khai báo ánh xạ iđ và hiển thị giá
+        TextView txtPrice = convertView.findViewById(R.id.txtPrice);
+        txtPrice.setText("Gía bán: " + myPhone.getPrice());
+
         return convertView;
     }
 }

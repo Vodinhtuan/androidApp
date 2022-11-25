@@ -1,13 +1,13 @@
-package com.example.testcustomlistviewnangcao;
+package com.example.dinhtuan_ss13_gridview.model;
 
-public class Phone {
+public class Image {
     private int img;
     private String name;
 
-    public Phone() {
+    public Image() {
     }
 
-    public Phone(int img, String name) {
+    public Image(int img, String name) {
         this.img = img;
         this.name = name;
     }
