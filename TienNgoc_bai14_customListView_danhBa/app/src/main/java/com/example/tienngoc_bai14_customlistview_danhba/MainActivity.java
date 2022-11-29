@@ -1,12 +1,12 @@
-package com.dinhtuan_ss14_customlistview_phonebook;
+package com.example.tienngoc_bai14_customlistview_danhba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.dinhtuan_ss14_customlistview_phonebook.adapter.adaptercostum;
-import com.dinhtuan_ss14_customlistview_phonebook.model.Detail;
+import com.example.tienngoc_bai14_customlistview_danhba.adapter.adaptercostum;
+import com.example.tienngoc_bai14_customlistview_danhba.model.Detail;
 
 import java.util.ArrayList;
 
