@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Button btntong;
     TabHost mytab;
     // Khai báo ListView
-    ListView lv;
+    ListView listView;
     ArrayList<String> myList;
     ArrayAdapter<String> myadapter;
     @Override
@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
         btntong = findViewById(R.id.btntong);
 
         // Xử lý listView
-        lv.findViewById(R.id.lv);
+        listView = findViewById(R.id.lv);
         // Tạo mảng
         myList = new ArrayList<>();
         // Tạo Adapter
         myadapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1,myList);
-        lv.setAdapter(myadapter);
+        listView.setAdapter(myadapter);
         // Xử lý TabHost
         mytab = findViewById(R.id.mytab);
         mytab.setup();
