@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnInsert, btnQuery, btnUpdate, btnDelete;
     EditText edtClassId, edtClassName, edtQuantity;
     ListView lv;
-    ArrayList<String> myList;
+    ArrayList<String> myList;  // mảng dữ liệu
     ArrayAdapter<String> myAdapter;
     SQLiteDatabase myDataBase;
     @Override
@@ -48,16 +48,20 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             Log.e("Error", "Table is exist!!!");
         }
+
+
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String classId = edtClassId.getText().toString();
                 String className = edtClassName.getText().toString();
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
+
                 ContentValues myValue = new ContentValues();
-                myValue.put("classId", classId);
+                myValue.put("classId", classId);        // "tên trường"; String;
                 myValue.put("className", className);
                 myValue.put("quantity", quantity);
+
                 String messenger = "";
                 if(myDataBase.insert("tblClass", null, myValue) == -1){
                     messenger = "Fail to Insert Record!!!";
@@ -102,16 +106,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, messenger, Toast.LENGTH_SHORT).show();
             }
         });
+
         btnQuery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myList.clear();
+                myList.clear(); // xóa dữ liệu cũ trên listView
                 Cursor cursor = myDataBase.query("tblClass", null, null, null, null, null, null);
                 cursor.moveToNext();
                 String data = "";
                 while (cursor.isAfterLast() == false){
                     data = cursor.getString(0) + " - " + cursor.getString(1) + " - " + cursor.getString(2);
-                    cursor.moveToNext();
+                    cursor.moveToNext();    // Di chuyển đến bảng ghi kế tiếp
                     myList.add(data);
                 }
                 cursor.close();;
