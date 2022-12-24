@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgnv"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/male" />
+
+    <TextView
+        android:id="@+id/txttennv"
+        android:layout_width="221dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:text="ma1-Quach Tinh"
+        android:textColor="#009688"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/cbchon"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_weight="1" />
+</LinearLayout>

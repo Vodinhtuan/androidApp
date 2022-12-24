@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     String DB_PATH_SUFFIX = "/databases/";
     SQLiteDatabase database=null;
-    String DATABASE_NAME="qlsach.db";
+    String DATABASE_NAME="Book.db";
     //Khai báo ListView
     ListView lv;
     ArrayList<String> mylist;
@@ -31,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
         //Gọi hàm Copy CSDL từ assets vào thư mục Databases
         processCopy();
         //Mở CSDL lên để dùng
-        database = openOrCreateDatabase("qlsach.db",MODE_PRIVATE, null);
+        database = openOrCreateDatabase(DATABASE_NAME,MODE_PRIVATE, null);
         // Tạo ListView
         lv = findViewById(R.id.lv);
         mylist = new ArrayList<>();
         myadapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, mylist);
         lv.setAdapter(myadapter);
         // Truy vấn CSDL và cập nhật hiển thị lên Listview
-        Cursor c = database.query("tbsach",null,null,null,null,null,null);
+        Cursor c = database.query("tbBook",null,null,null,null,null,null);
         c.moveToFirst();
         String data ="";
         while (c.isAfterLast() == false)
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         c.close();
         myadapter.notifyDataSetChanged();
     }
-
     private void processCopy() {
         File dbFile = getDatabasePath(DATABASE_NAME);
         if (!dbFile.exists())
@@ -64,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
     private String getDatabasePath() {
         return getApplicationInfo().dataDir + DB_PATH_SUFFIX+ DATABASE_NAME;
     }
 
     public void CopyDataBaseFromAsset() {
-
         try {
             InputStream myInput;
             myInput = getAssets().open(DATABASE_NAME);
@@ -91,9 +90,7 @@ public class MainActivity extends AppCompatActivity {
             myOutput.close();
             myInput.close();
         } catch (IOException e) {
-
             e.printStackTrace();
         }
     }
 }
-
