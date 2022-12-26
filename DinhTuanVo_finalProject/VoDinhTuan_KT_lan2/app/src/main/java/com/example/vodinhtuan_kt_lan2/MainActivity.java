@@ -2,16 +2,16 @@ package com.example.vodinhtuan_kt_lan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,30 +27,93 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv;
-    ArrayList<Employee> employees = new ArrayList<>();
+    ArrayList<Employee> employees = new ArrayList<>(); //demo
     MyArrayAdapter myArrayAdapter;
     ImageButton btnDelete;
     Button btnCreate;
     TextView edtId, edtName;
     RadioButton rbMale, rbFemale;
     public boolean gender = true;
-    public static ArrayList<Integer> list = new ArrayList<>();
+    public static ArrayList<String> list = new ArrayList<String>();
 
     // Database connect
-    String DB_PATH_SUFFIX = "/databases/";
-    SQLiteDatabase database=null;
-    String DATABASE_NAME="";
+//    String DB_PATH_SUFFIX = "/databases/";
+//    SQLiteDatabase database=null;
+//    String DATABASE_NAME="finalProject.db";
 
+    //
+    SQLiteDatabase myDataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addControls();
-        addEvent();
+
+        edtId = findViewById(R.id.edtId);
+        edtName = findViewById(R.id.edtName);
+        rbMale = findViewById(R.id.rbMale);
+        rbFemale = findViewById(R.id.rbFemale);
+        btnDelete = findViewById(R.id.btnDelete);
+        btnCreate = findViewById(R.id.btnCreate);
+
+        //addControls();
+        //addEvent();
+
+        // Create DataBase;
+        /*myDataBase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);*/
+        // Create Table;
+        try {
+            String sql = "CREATE TABLE tblEmployee(id Text primary key, gender INTEGER, name TEXT)";
+            myDataBase.execSQL(sql);
+        }catch (Exception e){
+            Log.e("Error", "Table is exist!!!");
+        }
+
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = edtId.getText().toString();
+                if (rbMale.isChecked()){
+                    gender = true;
+                }else {
+                    gender = false;
+                }
+                String name = edtName.getText().toString();
+                ContentValues myValue = new ContentValues();
+                myValue.put("id", id);        // "tên trường"; String;
+                myValue.put("gender", gender);
+                myValue.put("name", name);
+
+                String messenger = "";
+                if(myDataBase.insert("tblEmployee", null, myValue) == -1){
+                    messenger = "Fail to Insert Record!!!";
+                }else {
+                    messenger = "Insert record Sucessfully!!!";
+                }
+                Toast.makeText(MainActivity.this, messenger, Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        list.clear();
+        Cursor cursor = myDataBase.query("tblEmployee", null, null, null, null, null, null);
+        cursor.moveToNext();
+        String data = "";
+        while (cursor.isAfterLast() == false){
+            data = cursor.getString(0) + " - " + cursor.getString(1) + " - " + cursor.getString(2);
+            cursor.moveToNext();    // Di chuyển đến bảng ghi kế tiếp
+            list.add(data);
+        }
+        cursor.close();;
+        myArrayAdapter.notifyDataSetChanged();
 
     }
 
-    private void processCopy() {
+
+
+
+
+    // cách 2
+    /*private void processCopy() {
         File dbFile = getDatabasePath(DATABASE_NAME);
         if (!dbFile.exists())
         {
@@ -102,12 +165,27 @@ public class MainActivity extends AppCompatActivity {
         btnDelete = findViewById(R.id.btnDelete);
         btnCreate = findViewById(R.id.btnCreate);
         lv = findViewById(R.id.lv);
-        employees.add(new Employee("SS01", true, "DinhTuan"));
+        processCopy();
+        database = openOrCreateDatabase(DATABASE_NAME,MODE_PRIVATE, null);
+
+        *//*employees.add(new Employee("SS01", true, "DinhTuan"));
         employees.add(new Employee("SS02", false, "Female"));
         employees.add(new Employee("SS03", true, "DinhTuan"));
-        employees.add(new Employee("SS04", false, "Female"));
+        employees.add(new Employee("SS04", false, "Female"));*//*
+
         myArrayAdapter = new MyArrayAdapter(MainActivity.this, R.layout.layout_item,employees);
         lv.setAdapter(myArrayAdapter);
+        Cursor c = database.query("employee",null,null,null,null,null,null);
+        c.moveToFirst();
+        String data ="";
+        while (c.isAfterLast() == false)
+        {
+            data = c.getString(0)+"-"+c.getString(1)+"-"+c.getString(2);
+            list.add(data);
+            c.moveToNext();
+        }
+        c.close();
+        myArrayAdapter.notifyDataSetChanged();
     }
 
 
@@ -116,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!list.isEmpty()){
-                    for (int k:list){
+                    for (String k:list){
                         employees.remove(k);
                     }
                     list.clear();
@@ -144,5 +222,5 @@ public class MainActivity extends AppCompatActivity {
                 edtName.setText("");
             }
         });
-    }
+    }*/
 }
