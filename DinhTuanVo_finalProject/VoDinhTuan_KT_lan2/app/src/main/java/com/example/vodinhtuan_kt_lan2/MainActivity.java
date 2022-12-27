@@ -36,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean gender = true;
     public static ArrayList<String> list = new ArrayList<String>();
 
-    // Database connect
-//    String DB_PATH_SUFFIX = "/databases/";
-//    SQLiteDatabase database=null;
-//    String DATABASE_NAME="finalProject.db";
-
-    //
     SQLiteDatabase myDataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
