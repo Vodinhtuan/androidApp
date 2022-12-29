@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 
 import com.example.dinhtuan_vnexpress.adapter.MyArrayAdapter;
@@ -41,15 +40,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lv1 = findViewById(R.id.lv1);
-        myList = new ArrayList<>();
-        myadapter = new MyArrayAdapter(MainActivity.this, R.layout.layout_listview, myList );
+        myList = new ArrayList<List>();
+        myadapter = new MyArrayAdapter(MainActivity.this, myList, R.layout.layout_listview);
         lv1.setAdapter(myadapter);
         LoadExampleTask task = new LoadExampleTask();
         task.execute();
 
     }
-    class LoadExampleTask extends AsyncTask<Void, Void, ArrayList<List>>{
 
+    class LoadExampleTask extends AsyncTask<Void, Void, ArrayList<List>>{
         @Override
         protected ArrayList<List> doInBackground(Void... voids) {
             myList = new ArrayList<List>();
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 // Bắt đầu duyệt parser
                 int eventType = -1;
                 while(eventType != XmlPullParser.END_DOCUMENT ){
-                    eventType = parser.new();
+                    eventType = parser.next();
                     switch (eventType){
                         case XmlPullParser.START_DOCUMENT:
                             break;
