@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     TextView edtId, edtName;
     RadioButton rbMale, rbFemale;
     public boolean gender = true;
-    public static ArrayList<String> list = new ArrayList<String>();
+    public static ArrayList list;
 
     SQLiteDatabase myDataBase;
     @Override
